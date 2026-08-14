@@ -154,7 +154,7 @@ export default function InvoiceGeneratorPage() {
                     <span className="font-medium">Power Up Your Invoices</span>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <a href="https://crav-logo-studio.vercel.app" target="_blank" className="flex items-center gap-3 p-3 bg-gray-800/50 hover:bg-gray-800 rounded-lg">
+                    <a href="https://javarilogo.com/brand" target="_blank" className="flex items-center gap-3 p-3 bg-gray-800/50 hover:bg-gray-800 rounded-lg">
                       <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center">
                         <Palette className="w-5 h-5" />
                       </div>
@@ -163,7 +163,7 @@ export default function InvoiceGeneratorPage() {
                         <p className="text-xs text-gray-400">Create with Logo Studio</p>
                       </div>
                     </a>
-                    <a href="https://crav-qr-generator.vercel.app" target="_blank" className="flex items-center gap-3 p-3 bg-gray-800/50 hover:bg-gray-800 rounded-lg">
+                    <a href="https://craudiovizai.com/apps/qr-generator" target="_blank" className="flex items-center gap-3 p-3 bg-gray-800/50 hover:bg-gray-800 rounded-lg">
                       <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
                         <QrCode className="w-5 h-5" />
                       </div>
@@ -172,7 +172,7 @@ export default function InvoiceGeneratorPage() {
                         <p className="text-xs text-gray-400">Faster mobile payments</p>
                       </div>
                     </a>
-                    <a href="https://crav-website-builder.vercel.app" target="_blank" className="flex items-center gap-3 p-3 bg-gray-800/50 hover:bg-gray-800 rounded-lg">
+                    <a href="https://craudiovizai.com/apps/builder" target="_blank" className="flex items-center gap-3 p-3 bg-gray-800/50 hover:bg-gray-800 rounded-lg">
                       <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
                         <Globe className="w-5 h-5" />
                       </div>
