@@ -7,11 +7,12 @@ import { NextRequest, NextResponse } from 'next/server';
 // answered 401 to everyone. Invoices have never listed or been created by anyone.
 import { requireUser } from '@/lib/api/require-user';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
+import { secretKey, supabaseUrl } from "@craudioviz/platform-sdk";
 
 function db() {
   return createSupabaseClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl(),
+    secretKey(),
     { auth: { persistSession: false },
       // Next 14 caches PostgREST GETs by URL and serves stale rows invisibly.
       global: { fetch: (u: RequestInfo | URL, o?: RequestInit) => fetch(u, { ...o, cache: 'no-store' }) } },
