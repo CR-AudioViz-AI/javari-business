@@ -1,9 +1,18 @@
 "use client";
 // app/page.tsx — Javari Business Formation
+//
+// 2026-09-03: tiles pointing at pages that do not exist now render as "Coming
+// soon" instead of linking to a 404. An ecosystem sweep with Javari Verify found
+// six advertised as working navigation.
+//
+// NOT stubbed with placeholder pages, deliberately. A route returning 200 with a
+// header, a footer and nothing between them is the exact defect
+// hollow-response.ts exists to detect - it would trade a visible 404 for a silent
+// lie, and the next scan would flag it.
 // CR AudioViz AI · EIN 39-3646201 · May 2026
 import { useState } from "react";
 
-const TOOLS = [{"icon": "\ud83d\udccb", "label": "Business Plan", "desc": "Full investor-ready business plan", "href": "/business-plan"}, {"icon": "\u2696\ufe0f", "label": "Operating Agree", "desc": "LLC operating agreement draft", "href": "/operating"}, {"icon": "\ud83d\udcca", "label": "Financial Model", "desc": "5-year projections and forecasts", "href": "/financial"}, {"icon": "\ud83c\udfaf", "label": "Market Analysis", "desc": "Target market and competition", "href": "/market"}, {"icon": "\ud83d\udcdd", "label": "Articles", "desc": "Articles of incorporation draft", "href": "/articles"}, {"icon": "\ud83d\udcb0", "label": "Funding Pitch", "desc": "Investor pitch deck script", "href": "/pitch"}];
+const TOOLS = [{"icon": "\ud83d\udccb", "label": "Business Plan", "desc": "Full investor-ready business plan", "href": "/business-plan", "soon": true}, {"icon": "\u2696\ufe0f", "label": "Operating Agree", "desc": "LLC operating agreement draft", "href": "/operating", "soon": true}, {"icon": "\ud83d\udcca", "label": "Financial Model", "desc": "5-year projections and forecasts", "href": "/financial", "soon": true}, {"icon": "\ud83c\udfaf", "label": "Market Analysis", "desc": "Target market and competition", "href": "/market", "soon": true}, {"icon": "\ud83d\udcdd", "label": "Articles", "desc": "Articles of incorporation draft", "href": "/articles", "soon": true}, {"icon": "\ud83d\udcb0", "label": "Funding Pitch", "desc": "Investor pitch deck script", "href": "/pitch", "soon": true}];
 
 export default function HomePage() {
   const [input, setInput] = useState("");
@@ -63,7 +72,14 @@ export default function HomePage() {
       </section>
       <section style={{ maxWidth:960, margin:"0 auto", padding:"36px 20px 72px" }}>
         <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))", gap:12 }}>
-          {TOOLS.map((t:any) => (
+          {TOOLS.map((t:any) => t.soon ? (
+            <div key={t.href} style={{ background:"#0F1F32", border:"1px solid rgba(0,180,216,0.08)", borderRadius:14, padding:"18px 16px", display:"block", opacity:0.55 }}>
+              <span style={{ fontSize:26, display:"block", marginBottom:8 }}>{t.icon}</span>
+              <div style={{ fontWeight:700, fontSize:13, color:"#e2e8f0", marginBottom:4 }}>{t.label}</div>
+              <div style={{ fontSize:11, color:"#6B7280", lineHeight:1.4 }}>{t.desc}</div>
+              <div style={{ fontSize:10, color:"#00B4D8", marginTop:6, fontWeight:700, letterSpacing:0.4 }}>COMING SOON</div>
+            </div>
+          ) : (
             <a key={t.href} href={t.href} style={{ background:"#0F1F32", border:"1px solid rgba(0,180,216,0.08)", borderRadius:14, padding:"18px 16px", textDecoration:"none", display:"block" }}>
               <span style={{ fontSize:26, display:"block", marginBottom:8 }}>{t.icon}</span>
               <div style={{ fontWeight:700, fontSize:13, color:"#e2e8f0", marginBottom:4 }}>{t.label}</div>
