@@ -15,5 +15,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           is a larger change than this one and is left alone deliberately. */}
       <link rel="canonical" href="https://javaribusiness.com" />
       </head>
-    <body style={{margin:0,padding:0,background:"#040912",color:"#e2e8f0",fontFamily:"system-ui"}}>{children}</body></html>);
+    <body style={{margin:0,padding:0,background:"#040912",color:"#e2e8f0",fontFamily:"system-ui"}}>
+        {/* 2026-09-10: WCAG 2.4.1. Without this a keyboard user traverses the
+            entire navigation on every page before reaching anything. Visually
+            hidden until focused, which is the point - it is for people who are
+            not using a mouse, and it appears the moment they tab. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-black focus:outline focus:outline-2"
+        >
+          Skip to main content
+        </a>
+{children}</body></html>);
 }
