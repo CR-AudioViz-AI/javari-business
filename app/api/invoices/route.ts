@@ -28,7 +28,7 @@ export async function GET(req: NextRequest) {
   const { data, error } = await supabase
     .from('invoices').select('*, invoice_line_items(*)')
     .eq('user_id', session.user.id).order('created_at', { ascending: false });
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return NextResponse.json({ error: 'The request could not be completed.', code: 'INTERNAL_ERROR' }, { status: 500 });
   return NextResponse.json({ invoices: data });
 }
 
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
   const { line_items, ...invoice } = body;
   const { data: inv, error } = await supabase
     .from('invoices').insert({ ...invoice, user_id: session.user.id }).select().single();
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return NextResponse.json({ error: 'The request could not be completed.', code: 'INTERNAL_ERROR' }, { status: 500 });
   if (line_items?.length) {
     await supabase.from('invoice_line_items')
       .insert(line_items.map((li: any) => ({ ...li, invoice_id: inv.id })));
